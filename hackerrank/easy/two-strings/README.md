@@ -52,9 +52,9 @@ For each pair of strings, return `YES` or `NO`.
 ## Solution
 
 **Language:** Java  
-**Runtime:** 60 ms  
-**Memory:** 32.8 MB  
-**Submitted:** 2026-11-04T12:57:48.979Z  
+**Runtime:** N/A  
+**Memory:** N/A  
+**Submitted:** 2026-11-04T12:57:58.040Z  
 
 ```java
 import java.io.*;
