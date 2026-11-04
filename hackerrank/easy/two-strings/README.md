@@ -51,80 +51,92 @@ For each pair of strings, return `YES` or `NO`.
 
 ## Solution
 
-**Language:** Java  
+**Language:** Go  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-04T12:57:58.040Z  
+**Submitted:** 2026-11-04T13:07:40.428Z  
 
-```java
-import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.function.*;
-import java.util.regex.*;
-import java.util.stream.*;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
+```go
+package main
 
-class Result {
+import (
+    "bufio"
+    "fmt"
+    "io"
+    "os"
+    "strconv"
+    "strings"
+)
 
-    /*
-     * Complete the 'twoStrings' function below.
-     *
-     * The function is expected to return a STRING.
-     * The function accepts following parameters:
-     *  1. STRING s1
-     *  2. STRING s2
-     */
+/*
+ * Complete the 'twoStrings' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts following parameters:
+ *  1. STRING s1
+ *  2. STRING s2
+ */
 
-   
-public static String twoStrings(String s1, String s2) {
 
-    HashSet<Character> set = new HashSet<>();
+func twoStrings(s1 string, s2 string) string {
 
-    for (char ch : s1.toCharArray()) {
-        set.add(ch);
+    var seen [26]bool
+
+    // Mark characters present in s1
+    for _, ch := range s1 {
+        seen[ch-'a'] = true
     }
 
-    for (char ch : s2.toCharArray()) {
-        if (set.contains(ch)) {
-            return "YES";
+    // Check if s2 contains any common character
+    for _, ch := range s2 {
+        if seen[ch-'a'] {
+            return "YES"
         }
     }
 
-    return "NO";
+    return "NO"
 }
 
 
+func main() {
+    reader := bufio.NewReaderSize(os.Stdin, 16 * 1024 * 1024)
+
+    stdout, err := os.Create(os.Getenv("OUTPUT_PATH"))
+    checkError(err)
+
+    defer stdout.Close()
+
+    writer := bufio.NewWriterSize(stdout, 16 * 1024 * 1024)
+
+    qTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
+    checkError(err)
+    q := int32(qTemp)
+
+    for qItr := 0; qItr < int(q); qItr++ {
+        s1 := readLine(reader)
+
+        s2 := readLine(reader)
+
+        result := twoStrings(s1, s2)
+
+        fmt.Fprintf(writer, "%s\n", result)
+    }
+
+    writer.Flush()
 }
 
-public class Solution {
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+func readLine(reader *bufio.Reader) string {
+    str, _, err := reader.ReadLine()
+    if err == io.EOF {
+        return ""
+    }
 
-        int q = Integer.parseInt(bufferedReader.readLine().trim());
+    return strings.TrimRight(string(str), "\r\n")
+}
 
-        IntStream.range(0, q).forEach(qItr -> {
-            try {
-                String s1 = bufferedReader.readLine();
-
-                String s2 = bufferedReader.readLine();
-
-                String result = Result.twoStrings(s1, s2);
-
-                bufferedWriter.write(result);
-                bufferedWriter.newLine();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-
-        bufferedReader.close();
-        bufferedWriter.close();
+func checkError(err error) {
+    if err != nil {
+        panic(err)
     }
 }
 
