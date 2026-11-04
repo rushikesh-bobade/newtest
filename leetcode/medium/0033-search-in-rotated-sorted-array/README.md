@@ -50,56 +50,39 @@ Output: -1
 
 ## Solution
 
-**Language:** JavaScript  
+**Language:** Java  
 **Runtime:** 0 ms (beats 100.00%)  
-**Memory:** 54.3 MB (beats 39.40%)  
-**Submitted:** 2026-11-04T12:53:48.564Z  
+**Memory:** 43 MB (beats 98.92%)  
+**Submitted:** 2026-11-04T13:05:20.838Z  
 
-```js
+```java
+class Solution {
+    public int search(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
 
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
-var search = function(nums, target) {
-    let left = 0;
-    let right = nums.length - 1;
+        // Time Complexity: O(log n)
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) return mid;
 
-    while (left <= right) {
-        let mid = Math.floor((left + right) / 2);
-
-        // Target found
-        if (nums[mid] === target) {
-            return mid;
-        }
-
-        // Left half is sorted
-        if (nums[left] <= nums[mid]) {
-
-            // Target lies in the sorted left half
-            if (target >= nums[left] && target < nums[mid]) {
-                right = mid - 1;
-            } else {
-                left = mid + 1;
-            }
-
-        } 
-        // Right half is sorted
-        else {
-
-            // Target lies in the sorted right half
-            if (target > nums[mid] && target <= nums[right]) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
+            if (nums[left] <= nums[mid]) { // left half sorted
+                if (nums[left] <= target && target < nums[mid]) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            } else { // right half sorted
+                if (nums[mid] < target && target <= nums[right]) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
             }
         }
+
+        return -1;
     }
-
-    return -1;
-};
-
+}
 ```
 
 ---
