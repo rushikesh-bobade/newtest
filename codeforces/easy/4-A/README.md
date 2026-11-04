@@ -41,29 +41,19 @@ For example, the boys can divide the watermelon into two parts of 2 and 6 kilos 
 
 ## Solution
 
-**Language:** Java  
+**Language:** Kotlin  
 **Runtime:** 0 ms  
 **Memory:** 0 KB  
-**Submitted:** 2026-11-04T12:59:57.940Z  
+**Submitted:** 2026-11-04T13:13:33.724Z  
 
-```java
+```kt
+fun main() {
+    val w = readLine()!!.toInt()
 
-import java.util.Scanner;
-
-public class Main {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-
-        int w = input.nextInt();
-
-        int pete = 2;
-        int billy = w - pete;
-
-        System.out.println(
-            (billy > 0 && billy % 2 == 0) ? "YES" : "NO"
-        );
-
-        input.close();
+    if (w > 2 && w % 2 == 0) {
+        println("YES")
+    } else {
+        println("NO")
     }
 }
 
