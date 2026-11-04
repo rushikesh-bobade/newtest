@@ -45,17 +45,50 @@ NO
 ## Solution
 
 **Language:** c_cpp  
-**Runtime:** N/A  
+**Runtime:** 0.00 s  
 **Memory:** N/A  
-**Submitted:** 2026-11-04T13:05:30.250Z  
+**Submitted:** 2026-11-04T13:06:03.720Z  
 
 ```c_cpp
+
 #include <bits/stdc++.h>
 using namespace std;
 
 int main() {
-	// your code goes here
+    int t;
+    cin >> t;
 
+    while (t--) {
+        string s;
+        cin >> s;
+
+        int n = s.length();
+        int freq[26] = {0};
+
+        // Count characters in the left half
+        for (int i = 0; i < n / 2; i++) {
+            freq[s[i] - 'a']++;
+        }
+
+        // Subtract characters in the right half
+        for (int i = (n + 1) / 2; i < n; i++) {
+            freq[s[i] - 'a']--;
+        }
+
+        bool isLapindrome = true;
+
+        // Check whether all frequencies are zero
+        for (int i = 0; i < 26; i++) {
+            if (freq[i] != 0) {
+                isLapindrome = false;
+                break;
+            }
+        }
+
+        cout << (isLapindrome ? "YES" : "NO") << '\n';
+    }
+
+    return 0;
 }
 
 ```
