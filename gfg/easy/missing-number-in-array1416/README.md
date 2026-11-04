@@ -32,27 +32,28 @@ Explanation: Only 1 is present so the missing element is 2.
 
 ## Solution
 
-**Language:** C++  
-**Runtime:** 0.25 s  
+**Language:** C#  
+**Runtime:** 0.3 s  
 **Memory:** N/A  
-**Submitted:** 2026-11-04T12:55:49.024Z  
+**Submitted:** 2026-11-04T13:04:55.073Z  
 
-```cpp
+```cs
 
 class Solution {
-  public:
-    int missingNum(vector<int>& arr) {
-        int n = arr.size() + 1;
+    public int missingNum(int[] arr) {
+        long n = arr.Length + 1;
 
-        long long total = (1LL * n * (n + 1)) / 2;
+        long expectedSum = n * (n + 1) / 2;
 
-        for (int num : arr) {
-            total -= num;
+        long actualSum = 0;
+
+        foreach (int num in arr) {
+            actualSum += num;
         }
 
-        return total;
+        return (int)(expectedSum - actualSum);
     }
-};
+}
 
 ```
 
