@@ -54,25 +54,29 @@ So the answer is 4*20=80.
 
 ## Solution
 
-**Language:** C++  
+**Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-04T13:13:49.215Z  
+**Submitted:** 2026-11-04T13:16:33.337Z  
 
-```cpp
-#include <iostream>
-using namespace std;
+```java
+import java.util.Scanner;
 
-int main() {
-    int L, B;
+class Solution {
 
-    cin >> L >> B;
+    public static void main(String args[]) {
 
-    int area = L * B;
+        Scanner sc = new Scanner(System.in);
 
-    cout << area << endl;
+        int L = sc.nextInt();
+        int B = sc.nextInt();
 
-    return 0;
+        int area = L * B;
+
+        System.out.println(area);
+
+        sc.close();
+    }
 }
 ```
 
