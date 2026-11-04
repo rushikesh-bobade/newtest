@@ -52,8 +52,8 @@ Output: -1
 
 **Language:** JavaScript  
 **Runtime:** 0 ms (beats 100.00%)  
-**Memory:** 54.8 MB (beats 17.73%)  
-**Submitted:** 2026-11-04T12:53:25.416Z  
+**Memory:** 54.3 MB (beats 39.40%)  
+**Submitted:** 2026-11-04T12:53:48.564Z  
 
 ```js
 
