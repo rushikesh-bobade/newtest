@@ -45,9 +45,9 @@ NO
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0.15 s  
+**Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-04T12:56:23.431Z  
+**Submitted:** 2026-11-04T13:05:27.252Z  
 
 ```java
 
